@@ -12,7 +12,8 @@
         <p>할 일 : {{todolist.title}}</p>
     </div>
     <div>
-        <p>세부사항 : {{todolist.content}} </p>
+        <p style="white-space:pre">세부사항:
+{{todolist.content}} </p>
     </div>
     <div>
         <p>할 일 상태 : {{todolist.status}}</p>
@@ -20,6 +21,12 @@
     <div>
         <p>할 일 생성시간 : {{todolist.created_at}}</p>
     </div>
+
+    {% if not todolist.rewrited_at == None %}
+    <div>
+        <p>할 일 최근 수정시간 : {{todolist.rewrited_at}}</p>
+    </div>
+    {% endif %}
     <div>
         <p>마감기한 : {{todolist.due}}</p>
     </div>
