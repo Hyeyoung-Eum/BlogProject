@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '../static/main.css' %}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +15,10 @@
         <h3>PRE</h3>
         {% for todolist in todolists %}
             {% if todolist.status == 'pre' %}
-            <a href="{% url 'detail' todolist.id %}"><li>{{todolist.title}}</li></a>
+            <a href="{% url 'detail' todolist.id %}"><div>
+                {{todolist.title}}
+                <p>마감기한 : {{todolist.due}}</p>
+            </div></a>
             {% endif %}
         {% endfor %}
         
@@ -23,7 +28,10 @@
         <h3>ING</h3>
         {% for todolist in todolists %}
             {% if todolist.status == 'ing' %}
+            <div>
             <a href="{% url 'detail' todolist.id %}"><li>{{todolist.title}}</li></a>
+            <p>마감기한 : {{todolist.due}}</p>
+            </div>
             {% endif %}
         {% endfor %}
     </div>
@@ -33,7 +41,10 @@
         <ul>
         {% for todolist in todolists %}
             {% if todolist.status == 'post' %}
+            <div>
             <a href="{% url 'detail' todolist.id %}"><li>{{todolist.title}}</li></a>
+            <p>마감기한 : {{todolist.due}}</p>
+            </div>
             {% endif %}
         {% endfor %}
         </ul>

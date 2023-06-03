@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Todolist
+from datetime import datetime
 # Create your views here.
 def main(request):
     todolists = Todolist.objects.all()
@@ -12,8 +13,10 @@ def new(request):
             title=request.POST['title'],
             content=request.POST['content'],
             status=request.POST['status'],
-            due=request.POST['due']
+            due=request.POST['due'],
+            create_at=datetime.now()
         )
+
         return redirect('detail', new_todolist.id)
     return render(request, 'new.html')
 
@@ -29,7 +32,9 @@ def update(request, todolist_id):
                 title=request.POST['title'],
                 content=request.POST['content'],
                 status=request.POST['status'],
-                due=request.POST['due']
+                due=request.POST['due'],
+                rewrited_at=datetime.now()
+
         )
         return redirect('detail', todolist_id)
     return render(request, 'update.html',{'todolist':todolist})
