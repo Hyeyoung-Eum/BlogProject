@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList : 수정페이지</title>
+</head>
+<body>
+    <h3>할 일 수정하기</h3>
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="title">할 일 : </label>
+                <input type="text" name="title" id="title" placeholder="할 일을 입력하세요" value="{{todolist.title}}" required>
+            </div>
+            <div>
+                <label for="content">세부사항 : </label><br>
+                <textarea name="content" id="content" placeholder="세부사항을 입력하세요" cols="30" rows="10">{{todolist.content}}</textarea>
+            </div>
+            <div>
+                <label for="status">완료 여부를 알려주세요 : </label>
+                <select name="status" id="status">
+                    <option value="pre">pre</option>
+                    <option value="ing">ing</option>
+                    <option value="post">post</option>
+                </select>
+            </div>
+            <div>
+                <label for="due">마감 기한을 설정해주세요</label>
+                <input type="datetime-local" id="due" name="due" value="{{todolist.due}}">
+            </div>
+            <input type="submit" value="수정하기">
+        </form>
+    </div>
+</body>
+</html>
